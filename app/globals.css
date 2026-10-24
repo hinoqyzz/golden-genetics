@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f8fc;
+  --foreground: #12243a;
+  --body: #3e5168;
+  --muted: #5a6c80;
+  --card: #ffffff;
+  --primary: #082f70;
+  --primary-foreground: #ffffff;
+  --institutional: #075ca8;
+  --tech: #168ad2;
+  --mist: #80b8e4;
+  --line: rgba(8, 47, 112, 0.12);
+  --ring: #168ad2;
+  --danger: #8d2f39;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-institutional: var(--institutional);
+  --color-tech: var(--tech);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+#conteudo {
+  overflow-x: clip;
+}
+
+::selection {
+  background: #d6e8f8;
+  color: #082f70;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 0.6rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 0.9rem;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+.anchor-section {
+  scroll-margin-top: 5.5rem;
+}
+
+html.gg-intro,
+html.gg-intro body {
+  overflow: hidden;
+}
+
+html.gg-intro::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: #f6f9fe;
+  pointer-events: none;
+}
+
+html.gg-intro.gg-intro-live::before {
+  content: none;
+}
+
+@keyframes gg-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gg-step {
+  animation: gg-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gg-cell {
+  animation: gg-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.gg-status {
+  animation: gg-enter 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .gg-step,
+  .gg-cell,
+  .gg-status {
+    animation: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  #protocolo {
+    box-shadow: none !important;
+    border: 1px solid #082f70 !important;
+  }
+}
